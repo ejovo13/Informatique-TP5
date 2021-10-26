@@ -23,6 +23,15 @@ void insert(int *__full_array, int __n_sorted_array, int __ivalue);
 
 void tri_insertion(int *__tab, int __n);
 
+// return true if the array is in increasing order
+bool is_sorted(const *__tab, int __low, int __high);
 
+// Return the index of the partitioned value
+int partition(int *__tab, int __low, int __high);
+
+void new_tri_rapide(int *__tab, int __low, int __high);
+
+// UNITE THE SORTING FUNCTION API CALL THAT IS void (*func) (int*, int) !!!!!
+void tri_rapide(int *__tab, int __n);
 
 #endif

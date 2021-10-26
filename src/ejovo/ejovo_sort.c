@@ -95,3 +95,63 @@ void tri_insertion(int *__tab, int __n) {
         insert(__tab, i, i);
     }
 }
+
+// return true if the array is in increasing order
+bool is_sorted(const *__tab, int __low, int __high) {
+
+    if (__high < __low) return false;
+    if (__high == __low) return true;
+
+    for (int i = __low + 1; i < __high; i++) {
+        if (__tab[i] < __tab[i - 1]) return false;
+    }
+
+    return true;
+
+}
+
+// Return the index of the partitioned value
+int partition(int *__tab, int __low, int __high) {
+
+    int i = __low;
+    int j = __high + 1;
+    const int pivot = __tab[__low];
+
+    while (true) {
+
+        while (__tab[--j] >= pivot) {
+            if (j == __low) break;
+        }
+
+        while (__tab[++i] <= pivot) {
+            if (i == j) break;
+        }
+
+
+        if (i >= j) break;
+        ech(__tab, i, j);
+    }
+
+    // put partitioning item at __tab[j]
+    ech(__tab, __low, j);
+
+    return j;
+
+}
+
+void new_tri_rapide(int *__tab, int __low, int __high) {
+
+    if (__high <= __low) return;
+    int j = partition(__tab, __low, __high);
+    new_tri_rapide(__tab, __low, j - 1);
+    new_tri_rapide(__tab, j + 1, __high);
+
+}
+
+
+void tri_rapide(int *__tab, int __n) {
+
+    // I want to sort the array from 0 to __n - 1
+    new_tri_rapide(__tab, 0, __n - 1);
+
+}

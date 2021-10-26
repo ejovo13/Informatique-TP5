@@ -57,6 +57,7 @@ int *append_value(int *__arr, const int __len, const int __value, const int __n_
 }
 
 // return
+/*
 int *tri_rapide(int *__tab, int __n, int __pivot_index, int *__n_inf_ptr, int *__n_sup_ptr, int *__n_eq_ptr) {
 
     int n_inf = 0;
@@ -157,60 +158,45 @@ int *tri_rapide(int *__tab, int __n, int __pivot_index, int *__n_inf_ptr, int *_
 
     }
 }
+*/
 
 // Return the index of the partitioned value
-int partition(int *__tab, int __low, int __high) {
+// int partition(int *__tab, int __low, int __high) {
 
-    int i = __low;
-    int j = __high + 1;
-    const int pivot = __tab[__low];
+//     int i = __low;
+//     int j = __high + 1;
+//     const int pivot = __tab[__low];
 
-    while (true) {
+//     while (true) {
 
-        while (__tab[--j] >= pivot) {
-            if (j == __low) break;
-        }
+//         while (__tab[--j] >= pivot) {
+//             if (j == __low) break;
+//         }
 
-        while (__tab[++i] <= pivot) {
-            if (i == j) break;
-        }
-
-
-        if (i >= j) break;
-        ech(__tab, i, j);
-    }
-
-    // put partitioning item at __tab[j]
-    ech(__tab, __low, j);
-
-    return j;
-
-}
-
-void new_tri_rapide(int *__tab, int __low, int __high) {
-
-    if (__high <= __low) return;
-    int j = partition(__tab, __low, __high);
-    new_tri_rapide(__tab, __low, j - 1);
-    new_tri_rapide(__tab, j + 1, __high);
-
-}
-
-// return true if the array is in increasing order
-bool is_sorted(const *__tab, int __low, int __high) {
-
-    if (__high < __low) return false;
-    if (__high == __low) return true;
-
-    for (int i = __low + 1; i < __high; i++) {
-        if (__tab[i] < __tab[i - 1]) return false;
-    }
-
-    return true;
-
-}
+//         while (__tab[++i] <= pivot) {
+//             if (i == j) break;
+//         }
 
 
+//         if (i >= j) break;
+//         ech(__tab, i, j);
+//     }
+
+//     // put partitioning item at __tab[j]
+//     ech(__tab, __low, j);
+
+//     return j;
+
+// }
+
+// void new_tri_rapide(int *__tab, int __low, int __high) {
+
+//     if (__high <= __low) return;
+//     int j = partition(__tab, __low, __high);
+//     new_tri_rapide(__tab, __low, j - 1);
+//     new_tri_rapide(__tab, j + 1, __high);
+
+// }
 
 
 

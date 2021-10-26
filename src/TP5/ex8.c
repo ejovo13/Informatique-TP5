@@ -5,8 +5,8 @@
 #include "time.h"
 #include "stdio.h"
 
-#define N_SORT_FNS 3 // number of sorting functions that we're testing
-#define N_SORTS 10 // number of arrays to generate and sort.
+#define N_SORT_FNS 4 // number of sorting functions that we're testing
+#define N_SORTS 20 // number of arrays to generate and sort.
 #define N_ELEMENTS 10000 // number of elements per array
 #define MAX_VALUE 5000
 // #define N_TRIALS 10 // average the number of trials
@@ -41,11 +41,12 @@ int main() {
 
 
     typedef void (*fn_sort) (int*, int);
-    fn_sort fn_array[N_SORT_FNS] = {tri_bulle, tri_insertion, tri_selec, NULL};
-    char* fn_name[N_SORT_FNS] = {"Tri a bulle", "Tri par insertion", "Tri par selection"};//, "Tri rapide"};
+    fn_sort fn_array[N_SORT_FNS] = {tri_bulle, tri_insertion, tri_selec, tri_rapide};
+    char* fn_name[N_SORT_FNS] = {"Tri a bulle", "Tri par insertion", "Tri par selection", "Tri rapide"};
     clock_t total_time[N_SORT_FNS] = {0}; // The total time that each sorting routine takes,  in clock cycles
 
-    int arr[N_ELEMENTS] = {0}; // Create array where all the sorts will be performed
+    int arr[N_ELEMENTS] = {0}; // Create array where all the sorts will be generated
+    int *dummy = NULL;
 
     for (size_t i = 0; i < N_SORTS; i++) {
 
@@ -53,14 +54,15 @@ int main() {
 
         for (size_t f = 0; f < N_SORT_FNS; f++) {
 
+            dummy = copy_int_array(arr, N_ELEMENTS); // array that contains a copy of arr
             fn_sort sort_method = fn_array[f];
-            // printf("is arr sorted? %d\n", )
+            printf("is arr sorted? %d\n", is_sorted(arr, 0, N_ELEMENTS-1));
             printf("Calling function '%s' at address %p\n", fn_name[f], sort_method);
             start = clock();
-            sort_method(arr, N_ELEMENTS);
+            sort_method(dummy, N_ELEMENTS);
             end = clock();
             total_time[f] += (end - start);
-
+            free(dummy);
             // for each election type, I should call the selection.
             // to improve my C skills, let's use a function pointer.
 
@@ -68,7 +70,7 @@ int main() {
         }
     }
 
-    clear_screen();
+    // clear_screen();
 
     for (size_t i = 0; i < N_SORT_FNS; i++) {
 
