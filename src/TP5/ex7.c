@@ -158,6 +158,58 @@ int *tri_rapide(int *__tab, int __n, int __pivot_index, int *__n_inf_ptr, int *_
     }
 }
 
+// Return the index of the partitioned value
+int partition(int *__tab, int __low, int __high) {
+
+    int i = __low;
+    int j = __high + 1;
+    const int pivot = __tab[__low];
+
+    while (true) {
+
+        while (__tab[--j] >= pivot) {
+            if (j == __low) break;
+        }
+
+        while (__tab[++i] <= pivot) {
+            if (i == j) break;
+        }
+
+
+        if (i >= j) break;
+        ech(__tab, i, j);
+    }
+
+    // put partitioning item at __tab[j]
+    ech(__tab, __low, j);
+
+    return j;
+
+}
+
+void new_tri_rapide(int *__tab, int __low, int __high) {
+
+    if (__high <= __low) return;
+    int j = partition(__tab, __low, __high);
+    new_tri_rapide(__tab, __low, j - 1);
+    new_tri_rapide(__tab, j + 1, __high);
+
+}
+
+// return true if the array is in increasing order
+bool is_sorted(const *__tab, int __low, int __high) {
+
+    if (__high < __low) return false;
+    if (__high == __low) return true;
+
+    for (int i = __low + 1; i < __high; i++) {
+        if (__tab[i] < __tab[i - 1]) return false;
+    }
+
+    return true;
+
+}
+
 
 
 
@@ -167,18 +219,15 @@ int main() {
     ejovo_seed();
 
 
-    int c[5] = {61, 21, 40, 84, 74};
-    // init_tab(100, c, 5);
+    int c[100] = {0};
+    init_tab(100, c, 100);
+    print_int_array(c, 100);
 
-    print_int_array(c, 5);
+    printf("Sorting array...\n");
 
-    int dummy1 = 0;
-    int dummy2 = 0;
-    int dummy3 = 0;
-
-    int *sorted = tri_rapide(c, 5, 0, &dummy1, &dummy2, &dummy3);
-    // print_int_array(sorted, 1);
-    printf("Sorted address: %x", sorted);
+    new_tri_rapide(c, 0, 99);
+    print_int_array(c, 100);
+    printf("Array is sorted: %d\n", is_sorted(c, 0, 99));
 
 
     return 0;
