@@ -4,7 +4,7 @@
 ![MacOs](https://github.com/ejovo13/informatique-TP5/actions/workflows/Mac.yml/badge.svg)
 ![Windows](https://github.com/ejovo13/informatique-TP5/actions/workflows/Windows.yml/badge.svg)
 
-This repo contains my solutions to the exercises presented in TP4. All of the exercises can be made with CMake.
+This repo contains my solutions to the exercises presented in TP5. All of the exercises can be made with CMake.
 
 ### Build
 Build with cmake. The executable files will be output in the `bin` directory.
@@ -21,3 +21,9 @@ Tests can be run with `ctest` or `make test` while in the build directory. The t
 ### Docs
 Documentation for all of the functions declared in the `ejovo` headers can be found [here](https://ejovo13.github.io/informatique-TP4/)
 
+# TODO
+
+- [ ] Update readme
+- [ ] Add proper documentation
+- [ ] Setup documentation with gh pages
+- [ ] Add test suite to verify that my sorting functions work as expected
