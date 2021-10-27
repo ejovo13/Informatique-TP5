@@ -4,10 +4,11 @@
 #include "ejovo_rand.h"
 #include "time.h"
 #include "stdio.h"
+#include "ejovo_print.h"
 
 #define N_SORT_FNS 4 // number of sorting functions that we're testing
-#define N_SORTS 20 // number of arrays to generate and sort.
-#define N_ELEMENTS 10000 // number of elements per array
+#define N_SORTS 10 // number of arrays to generate and sort.
+#define N_ELEMENTS 15000 // number of elements per array
 #define MAX_VALUE 5000
 // #define N_TRIALS 10 // average the number of trials
 
@@ -24,13 +25,14 @@ int main() {
 
     // create a random array that will be used over and over
     ejovo_seed();
+    ex(8, "Comparer les fonctions de tri");
 
     double p = 0;
     clock_t start = clock();
     clock_t end = start; // initialize the start and end times
 
 
-    typedef void (*fn_sort) (int*, int);
+    typedef void (*fn_sort) (int*, int); // use a function pointer typedef to loop through each function
     fn_sort fn_array[N_SORT_FNS] = {tri_bulle, tri_insertion, tri_selec, tri_rapide};
     char* fn_name[N_SORT_FNS] = {"Tri a bulle", "Tri par insertion", "Tri par selection", "Tri rapide"};
     clock_t total_time[N_SORT_FNS] = {0}; // The total time that each sorting routine takes,  in clock cycles
@@ -46,7 +48,7 @@ int main() {
 
             dummy = copy_int_array(arr, N_ELEMENTS); // array that contains a copy of arr, copy_int_array declared in ejovo_sort
             fn_sort sort_method = fn_array[f];
-            printf("is arr sorted? %d\n", is_sorted(arr, 0, N_ELEMENTS-1));
+            // printf("is arr sorted? %d\n", is_sorted(arr, 0, N_ELEMENTS-1));
             printf("Calling function '%s' at address %p\n", fn_name[f], sort_method);
             start = clock();
             sort_method(dummy, N_ELEMENTS);
@@ -60,12 +62,16 @@ int main() {
         }
     }
 
-    // clear_screen();
+    clear_screen();
+
+    printf("Performed %d sorts of size %d arrays\n", N_SORTS, N_ELEMENTS);
+    print_line(38, '=');
+    // printf("\n");
 
     for (size_t i = 0; i < N_SORT_FNS; i++) {
 
         printf("Total time (s) for %20s: %lf\t average time: %lf\n", fn_name[i], (double) total_time[i] / CLOCKS_PER_SEC,
-                                                                                 ((double) total_time[i] / CLOCKS_PER_SEC) / N_SORTS);
+                                                                                ((double) total_time[i] / CLOCKS_PER_SEC) / N_SORTS);
 
 
     }

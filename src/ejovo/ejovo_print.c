@@ -16,7 +16,8 @@ void ex(int __ex_num, char * __description) {
     print_line(80, '=');
     printf("Description:\t%s \n", __description);
     print_line(80, '=');
-    printf("\n\n");
+    // printf("\n\n");
+    printf("\n");
 
 }
 

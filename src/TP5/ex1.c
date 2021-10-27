@@ -7,6 +7,7 @@
 
 int main() {
 
+    ex(1, "Afficher les premiers 3, 5, 10, et 12 elements du tableau 'tab'");
     int tab[] = {1, 2, 3, 25, 2345, 5467, 254, 6548, 245, 35647, 2345, 4567};
 
     // print_int_array declared in `ejovo_print.h` and defined in `ejovo_print.c`

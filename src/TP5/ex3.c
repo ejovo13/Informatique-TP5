@@ -17,6 +17,8 @@ int main(void) {
 
     int tab[2] = {1, 2};
 
+    ex(3, "Echanger element tab[0] et tab[1]");
+
     print_int_array(tab, 2);
 
     printf("Swapping values [0] and [1]...\n");

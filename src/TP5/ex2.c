@@ -16,6 +16,8 @@ void init_tab(int __max, int *__tab, int __n) {
 
 int main() {
 
+    ex(2, "Initialiser les premiers 50 elements d'un tableau de taille 100\n\t\tet puis l'afficher a l'ecran");
+
     ejovo_seed(); // seed my random generator
 
     int tab[100] = {0};

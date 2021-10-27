@@ -203,13 +203,13 @@ int *tri_rapide(int *__tab, int __n, int __pivot_index, int *__n_inf_ptr, int *_
 int main() {
 
     ejovo_seed();
-
+    ex(7, "Generer un tableau aleatoire et ensuite le trier par quicksort");
 
     int c[100] = {0};
     init_tab(100, c, 100);
     print_int_array(c, 100);
 
-    printf("Sorting array...\n");
+    printf("\nSorting array...\n\n");
 
     new_tri_rapide(c, 0, 99);
     print_int_array(c, 100);
