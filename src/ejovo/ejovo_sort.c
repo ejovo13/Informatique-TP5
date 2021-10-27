@@ -97,7 +97,7 @@ void tri_insertion(int *__tab, int __n) {
 }
 
 // return true if the array is in increasing order
-bool is_sorted(const *__tab, int __low, int __high) {
+bool is_sorted(const int *__tab, int __low, int __high) {
 
     if (__high < __low) return false;
     if (__high == __low) return true;
@@ -153,5 +153,17 @@ void tri_rapide(int *__tab, int __n) {
 
     // I want to sort the array from 0 to __n - 1
     new_tri_rapide(__tab, 0, __n - 1);
+
+}
+
+int *copy_int_array(const int *__arr, size_t __n) {
+
+    int *new_arr = (int *) malloc(__n * sizeof(int));
+
+    for (size_t i = 0; i < __n; i++) {
+        new_arr[i] = __arr[i];
+    }
+
+    return new_arr;
 
 }

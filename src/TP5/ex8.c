@@ -13,17 +13,7 @@
 
 // use a copy array routine to use the same generated random array
 
-int *copy_int_array(const int *__arr, size_t __n) {
 
-    int *new_arr = (int *) malloc(__n * sizeof(int));
-
-    for (size_t i = 0; i < __n; i++) {
-        new_arr[i] = __arr[i];
-    }
-
-    return new_arr;
-
-}
 
 int clear_screen(void) {
     return system("clear");
@@ -54,7 +44,7 @@ int main() {
 
         for (size_t f = 0; f < N_SORT_FNS; f++) {
 
-            dummy = copy_int_array(arr, N_ELEMENTS); // array that contains a copy of arr
+            dummy = copy_int_array(arr, N_ELEMENTS); // array that contains a copy of arr, copy_int_array declared in ejovo_sort
             fn_sort sort_method = fn_array[f];
             printf("is arr sorted? %d\n", is_sorted(arr, 0, N_ELEMENTS-1));
             printf("Calling function '%s' at address %p\n", fn_name[f], sort_method);
