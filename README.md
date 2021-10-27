@@ -19,7 +19,7 @@ ctest --output-on-failure
 
 Tests can be run with `ctest` or `make test` while in the build directory. The tests verify that the functions declared in the `ejovo_*` are working properly.
 ### Docs
-Documentation for all of the functions declared in the `ejovo` headers can be found [here](https://ejovo13.github.io/informatique-TP4/)
+Documentation for all of the functions declared in the `ejovo` headers can be found [here](https://ejovo13.github.io/Informatique-TP5/)
 
 # TODO
 
